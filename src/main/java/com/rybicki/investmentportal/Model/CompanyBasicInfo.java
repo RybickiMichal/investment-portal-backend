@@ -27,7 +27,7 @@ public class CompanyBasicInfo extends CompanySymbol {
                 change = stock.getQuote().getChange();
                 changeInPercent = stock.getQuote().getChangeInPercent();
             } catch (IOException e) {
-                this.symbol = "CompanyBasicInfo doesn't exist";
+                this.symbol = "Company doesn't exist";
             }
         }else{
             super.symbol = symbol;

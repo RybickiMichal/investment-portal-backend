@@ -86,12 +86,20 @@ public class UserCompaniesService {
                 return null;
             }
         }
-            CompanyBasicInfo company = new CompanyBasicInfo(symbol, true);
-            if (company.getSymbol().equals("CompanyBasicInfo doesn't exist")) {
-                return null;
-            }
-            companyRepository.save(new CompanySymbol(company.getSymbol(), user));
-            return company;
+        CompanyBasicInfo company = new CompanyBasicInfo(symbol, true);
+        if (isCompanyExisting(company)) {
+            return null;
+        }
+        companyRepository.save(new CompanySymbol(company.getSymbol(), user));
+        return company;
+    }
+
+    private boolean isCompanyExisting(CompanyBasicInfo company){
+        boolean isCorrectSymbol = company.getSymbol().equals("Company doesn't exist");
+        boolean isChange = company.getChange() == null;
+        boolean isAnnualYieldDividend = company.getAnnualYieldDividend() == null;
+        boolean isPrice = company.getPrice() == null;
+        return (isCorrectSymbol) || (isChange && isAnnualYieldDividend && isPrice);
     }
 
     private ArrayList<CompanySymbol> loadCompanySymbols(User user) {
