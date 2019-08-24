@@ -95,7 +95,7 @@ public class UserCompaniesService {
     }
 
     private boolean isCompanyExisting(CompanyBasicInfo company){
-        boolean isCorrectSymbol = company.getSymbol().equals("Company doesn't exist");
+        boolean isCorrectSymbol = company.getSymbol() == null;
         boolean isChange = company.getChange() == null;
         boolean isAnnualYieldDividend = company.getAnnualYieldDividend() == null;
         boolean isPrice = company.getPrice() == null;
