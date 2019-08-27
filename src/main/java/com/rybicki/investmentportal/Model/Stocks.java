@@ -15,10 +15,7 @@ public class Stocks {
     private ArrayList<CompanyBasicInfo> nasdaq100;
     private static String[] nasdaq100Symbols = new String[]{"AAL", "AAPL", "ADBE", "ADI", "ADP", "ADSK", "ALGN", "ALXN", "AMAT", "AMD", "AMGN", "AMZN", "ASML", "ATVI", "AVGO", "BIDU", "BIIB", "BKNG", "BMRN", "CDNS", "CELG", "CERN", "CHKP", "CHTR", "CMCSA", "COST", "CSCO", "CSX", "CTAS", "CTRP", "CTSH", "CTXS", "DLTR", "EA", "EBAY", "EXPE", "FAST", "FB", "FISV", "FOX", "FOXA", "GILD", "GILD", "GOOG", "GOOGL", "HAS", "HSIC", "IDXX", "ILMN", "INCY", "INTC", "INTU", "ISRG", "JBHT", "JD", "KHC", "KLAC", "LBTYA", "LBTYK", "LRCX", "LULU", "MAR", "MCHP", "MDLZ", "MELI", "MNST", "MSFT", "MU", "MXIM", "MYL", "NFLX", "NTAP", "NTES", "NVDA", "NXPI", "ORLY", "PAYX", "PCAR", "PEP", "PYPL", "QCOM", "REGN", "ROST", "SBUX", "SIRI", "SNPS", "SWKS", "SYMC", "TMUS", "TSLA", "TTWO", "TXN", "UAL", "ULTA", "VRSK", "VRSN", "VRTX", "WBA", "WDAY", "WDC", "WLTW", "WYNN", "XEL", "XLNX"};
 
-    public Stocks() {
-
-
-    }
+    public Stocks() { }
 
     public ArrayList getDowJones30() {
         if (dowJones30 == null) {

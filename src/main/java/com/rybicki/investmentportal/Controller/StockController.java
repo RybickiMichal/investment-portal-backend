@@ -11,4 +11,8 @@ public interface StockController {
 
     CompanyBasicInfo getCompany(@PathVariable String index);
 
+    int getIndexPrice();
+
+    int getIndexPriceOnClosed();
+
 }

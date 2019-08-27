@@ -10,4 +10,8 @@ public interface StockService {
 
     CompanyBasicInfo findBySymbol(String symbol);
 
+    int getIndexPrice();
+
+    int getIndexPriceOnClosed();
+
 }

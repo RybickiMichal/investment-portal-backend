@@ -27,4 +27,16 @@ public class DowJones30Controller implements StockController {
     public CompanyBasicInfo getCompany(@PathVariable String symbol){
         return dowJones30Service.findBySymbol(symbol);
     }
+
+    @GetMapping("/stocks/dowJones/getIndexPrice")
+    @Override
+    public int getIndexPrice() {
+        return dowJones30Service.getIndexPrice();
+    }
+
+    @GetMapping("/stocks/dowJones/getIndexPriceOnClosed")
+    @Override
+    public int getIndexPriceOnClosed() {
+        return dowJones30Service.getIndexPriceOnClosed();
+    }
 }

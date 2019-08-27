@@ -1,7 +1,6 @@
 package com.rybicki.investmentportal.Controller;
 
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
-import com.rybicki.investmentportal.Service.DowJones30Service;
 import com.rybicki.investmentportal.Service.StandardAndPoors500Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,5 +27,17 @@ public class StandardAndPoors500Controller implements StockController {
     @Override
     public CompanyBasicInfo getCompany(@PathVariable String symbol) {
         return standardAndPoors500Service.findBySymbol(symbol);
+    }
+
+    @GetMapping("/stocks/standardPoors/getIndexPrice")
+    @Override
+    public int getIndexPrice() {
+        return standardAndPoors500Service.getIndexPrice();
+    }
+
+    @GetMapping("/stocks/standardPoors/getIndexPriceOnClosed")
+    @Override
+    public int getIndexPriceOnClosed() {
+        return standardAndPoors500Service.getIndexPriceOnClosed();
     }
 }

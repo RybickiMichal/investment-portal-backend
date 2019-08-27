@@ -27,5 +27,17 @@ public class Nasdaq100Controller implements StockController {
     public CompanyBasicInfo getCompany(@PathVariable String symbol) {
         return nasdaq100Service.findBySymbol(symbol);
     }
+
+    @GetMapping("/stocks/nasdaq/getIndexPrice")
+    @Override
+    public int getIndexPrice() {
+        return nasdaq100Service.getIndexPrice();
+    }
+
+    @GetMapping("/stocks/nasdaq/getIndexPriceOnClosed")
+    @Override
+    public int getIndexPriceOnClosed() {
+        return nasdaq100Service.getIndexPriceOnClosed();
+    }
 }
 
