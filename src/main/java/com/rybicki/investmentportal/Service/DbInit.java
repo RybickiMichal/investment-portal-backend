@@ -20,7 +20,7 @@ public class DbInit implements CommandLineRunner {
     public DbInit(UserRepository userRepository, PasswordEncoder passwordEncoder, CompanyRepository companyRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.companyRepository=companyRepository;
+        this.companyRepository = companyRepository;
     }
 
     @Override

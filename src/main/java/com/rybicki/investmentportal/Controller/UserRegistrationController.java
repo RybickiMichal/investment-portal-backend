@@ -13,7 +13,7 @@ import java.util.Base64;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class UserRegistration {
+public class UserRegistrationController {
     @Autowired
     UserService userService;
     @Autowired
