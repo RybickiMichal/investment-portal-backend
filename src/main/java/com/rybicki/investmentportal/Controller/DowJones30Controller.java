@@ -2,6 +2,7 @@ package com.rybicki.investmentportal.Controller;
 
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
 import com.rybicki.investmentportal.Service.DowJones30Service;
+import com.rybicki.investmentportal.Service.IndexBasicInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class DowJones30Controller implements StockController {
     @Autowired
     private DowJones30Service dowJones30Service;
+
+    @Autowired
+    private IndexBasicInfoService indexBasicInfoService;
 
     @GetMapping("/stocks/dowJones")
     @Override
@@ -28,15 +33,16 @@ public class DowJones30Controller implements StockController {
         return dowJones30Service.findBySymbol(symbol);
     }
 
-    @GetMapping("/stocks/dowJones/getIndexPrice")
+    @GetMapping("/stocks/dowJones/getIndexInfo")
     @Override
-    public int getIndexPrice() {
-        return dowJones30Service.getIndexPrice();
+    public CompanyBasicInfo getIndexInfo() {
+        return indexBasicInfoService.getIndexBasicInfo("^DJI");
     }
 
-    @GetMapping("/stocks/dowJones/getIndexPriceOnClosed")
+    @GetMapping("/stocks/dowJones/getIndexDetails")
     @Override
-    public int getIndexPriceOnClosed() {
-        return dowJones30Service.getIndexPriceOnClosed();
+    public Map<String, Object> getIndexDetails() {
+        return indexBasicInfoService.getIndexDetails("^DJI");
     }
+
 }

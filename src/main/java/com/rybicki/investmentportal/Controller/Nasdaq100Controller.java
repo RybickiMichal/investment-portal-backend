@@ -1,6 +1,7 @@
 package com.rybicki.investmentportal.Controller;
 
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
+import com.rybicki.investmentportal.Service.IndexBasicInfoService;
 import com.rybicki.investmentportal.Service.Nasdaq100Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,12 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class Nasdaq100Controller implements StockController {
     @Autowired
     private Nasdaq100Service nasdaq100Service;
+
+    @Autowired
+    private IndexBasicInfoService indexBasicInfoService;
 
     @GetMapping("/stocks/nasdaq")
     @Override
@@ -28,16 +33,16 @@ public class Nasdaq100Controller implements StockController {
         return nasdaq100Service.findBySymbol(symbol);
     }
 
-    @GetMapping("/stocks/nasdaq/getIndexPrice")
+    @GetMapping("/stocks/nasdaq/getIndexInfo")
     @Override
-    public int getIndexPrice() {
-        return nasdaq100Service.getIndexPrice();
+    public CompanyBasicInfo getIndexInfo() {
+        return indexBasicInfoService.getIndexBasicInfo("^NDX");
     }
 
-    @GetMapping("/stocks/nasdaq/getIndexPriceOnClosed")
+    @GetMapping("/stocks/nasdaq/getIndexDetails")
     @Override
-    public int getIndexPriceOnClosed() {
-        return nasdaq100Service.getIndexPriceOnClosed();
+    public Map<String, Object> getIndexDetails() {
+        return indexBasicInfoService.getIndexDetails("^NDX");
     }
 }
 

@@ -5,10 +5,7 @@ import com.rybicki.investmentportal.Model.Stocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
@@ -34,27 +31,5 @@ public class DowJones30Service implements StockService {
             }
         }
         return null;
-    }
-
-    @Override
-    public int getIndexPrice() {
-        try {
-            Stock stock = YahooFinance.get("^DJI");
-            return stock.getQuote().getPrice().intValue();
-        } catch (IOException e) {
-            LOGGER.error(""+e);
-        }
-        return 0;
-    }
-
-    @Override
-    public int getIndexPriceOnClosed() {
-        try {
-            Stock stock = YahooFinance.get("^DJI");
-            return stock.getQuote().getPreviousClose().intValue();
-        } catch (IOException e) {
-            LOGGER.error(""+e);
-        }
-        return 0;
     }
 }

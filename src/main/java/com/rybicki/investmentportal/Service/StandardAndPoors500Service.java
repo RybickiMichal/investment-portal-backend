@@ -36,26 +36,5 @@ public class StandardAndPoors500Service implements StockService {
         return null;
     }
 
-    @Override
-    public int getIndexPrice() {
-        try {
-            Stock stock = YahooFinance.get("^GSPC");
-            return stock.getQuote().getPrice().intValue();
-        } catch (IOException e) {
-            LOGGER.error(""+e);
-        }
-        return 0;
-    }
-
-    @Override
-    public int getIndexPriceOnClosed() {
-        try {
-            Stock stock = YahooFinance.get("^GSPC");
-            return stock.getQuote().getPreviousClose().intValue();
-        } catch (IOException e) {
-            LOGGER.error(""+e);
-        }
-        return 0;
-    }
 }
 

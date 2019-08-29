@@ -1,6 +1,7 @@
 package com.rybicki.investmentportal.Controller;
 
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
+import com.rybicki.investmentportal.Service.IndexBasicInfoService;
 import com.rybicki.investmentportal.Service.StandardAndPoors500Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -16,6 +18,9 @@ import java.util.ArrayList;
 public class StandardAndPoors500Controller implements StockController {
     @Autowired
     private StandardAndPoors500Service standardAndPoors500Service;
+
+    @Autowired
+    private IndexBasicInfoService indexBasicInfoService;
 
     @GetMapping("/stocks/standardPoors")
     @Override
@@ -29,15 +34,15 @@ public class StandardAndPoors500Controller implements StockController {
         return standardAndPoors500Service.findBySymbol(symbol);
     }
 
-    @GetMapping("/stocks/standardPoors/getIndexPrice")
+    @GetMapping("/stocks/standardPoors/getIndexInfo")
     @Override
-    public int getIndexPrice() {
-        return standardAndPoors500Service.getIndexPrice();
+    public CompanyBasicInfo getIndexInfo() {
+        return indexBasicInfoService.getIndexBasicInfo("^GSPC");
     }
 
-    @GetMapping("/stocks/standardPoors/getIndexPriceOnClosed")
+    @GetMapping("/stocks/standardPoors/getIndexDetails")
     @Override
-    public int getIndexPriceOnClosed() {
-        return standardAndPoors500Service.getIndexPriceOnClosed();
+    public Map<String, Object> getIndexDetails() {
+        return indexBasicInfoService.getIndexDetails("^GSPC");
     }
 }

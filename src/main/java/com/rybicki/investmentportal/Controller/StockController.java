@@ -4,6 +4,7 @@ import com.rybicki.investmentportal.Model.CompanyBasicInfo;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public interface StockController {
 
@@ -11,8 +12,8 @@ public interface StockController {
 
     CompanyBasicInfo getCompany(@PathVariable String index);
 
-    int getIndexPrice();
+    CompanyBasicInfo getIndexInfo();
 
-    int getIndexPriceOnClosed();
+    Map<String, Object> getIndexDetails();
 
 }
