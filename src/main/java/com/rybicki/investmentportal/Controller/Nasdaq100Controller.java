@@ -39,10 +39,5 @@ public class Nasdaq100Controller implements StockController {
         return indexBasicInfoService.getIndexBasicInfo("^NDX");
     }
 
-    @GetMapping("/stocks/nasdaq/getIndexDetails")
-    @Override
-    public Map<String, Object> getIndexDetails() {
-        return indexBasicInfoService.getIndexDetails("^NDX");
-    }
 }
 

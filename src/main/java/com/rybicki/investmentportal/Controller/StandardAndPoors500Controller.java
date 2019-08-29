@@ -40,9 +40,4 @@ public class StandardAndPoors500Controller implements StockController {
         return indexBasicInfoService.getIndexBasicInfo("^GSPC");
     }
 
-    @GetMapping("/stocks/standardPoors/getIndexDetails")
-    @Override
-    public Map<String, Object> getIndexDetails() {
-        return indexBasicInfoService.getIndexDetails("^GSPC");
-    }
 }

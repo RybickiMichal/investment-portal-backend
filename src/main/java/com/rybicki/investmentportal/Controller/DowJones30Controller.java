@@ -39,10 +39,5 @@ public class DowJones30Controller implements StockController {
         return indexBasicInfoService.getIndexBasicInfo("^DJI");
     }
 
-    @GetMapping("/stocks/dowJones/getIndexDetails")
-    @Override
-    public Map<String, Object> getIndexDetails() {
-        return indexBasicInfoService.getIndexDetails("^DJI");
-    }
 
 }

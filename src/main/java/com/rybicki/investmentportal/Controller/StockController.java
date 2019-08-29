@@ -14,6 +14,4 @@ public interface StockController {
 
     CompanyBasicInfo getIndexInfo();
 
-    Map<String, Object> getIndexDetails();
-
 }
