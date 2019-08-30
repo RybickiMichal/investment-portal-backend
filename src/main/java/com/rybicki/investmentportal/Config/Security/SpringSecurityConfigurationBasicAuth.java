@@ -33,7 +33,7 @@ public class SpringSecurityConfigurationBasicAuth extends WebSecurityConfigurerA
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                .antMatchers("/stocks/dowJones","/stocks/standardPoors","/stocks/nasdaq","/stocks/historicalQuotes/**","/stocks/companyDetails/**",
+                .antMatchers("/stocks/dowJones/**","/stocks/standardPoors/**","/stocks/nasdaq/**","/stocks/historicalQuotes/**","/stocks/companyDetails/**",
                         "/stocks/historicalFullQuotes/**","/basicauth/**","/users/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
