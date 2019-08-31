@@ -19,7 +19,7 @@ public class DowJones30Controller implements StockController {
     private DowJones30Service dowJones30Service;
 
     @Autowired
-    private RandomCompaniesService randomDowJones30CompaniesService;
+    private RandomCompaniesService randomCompaniesService;
 
     @Autowired
     private IndexBasicInfoService indexBasicInfoService;
@@ -43,8 +43,9 @@ public class DowJones30Controller implements StockController {
     }
 
     @GetMapping("/stocks/dowJones/getRandomCompanies")
+    @Override
     public ArrayList<CompanyBasicInfo> getRandomCompanies() {
-        return randomDowJones30CompaniesService.randomizeDowJones30Companies();
+        return randomCompaniesService.randomizeDowJones30Companies();
     }
 
 }

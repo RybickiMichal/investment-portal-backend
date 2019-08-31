@@ -16,11 +16,12 @@ import java.util.ArrayList;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class StandardAndPoors500Controller implements StockController {
+
     @Autowired
     private StandardAndPoors500Service standardAndPoors500Service;
 
     @Autowired
-    private RandomCompaniesService randomDowJones30CompaniesService;
+    private RandomCompaniesService randomCompaniesService;
 
     @Autowired
     private IndexBasicInfoService indexBasicInfoService;
@@ -44,7 +45,8 @@ public class StandardAndPoors500Controller implements StockController {
     }
 
     @GetMapping("/stocks/standardPoors/getRandomCompanies")
+    @Override
     public ArrayList<CompanyBasicInfo> getRandomCompanies() {
-        return randomDowJones30CompaniesService.randomizeStandardAndPoors500Companies();
+        return randomCompaniesService.randomizeStandardAndPoors500Companies();
     }
 }
