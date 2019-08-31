@@ -3,6 +3,7 @@ package com.rybicki.investmentportal.Controller;
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
 import com.rybicki.investmentportal.Service.DowJones30Service;
 import com.rybicki.investmentportal.Service.IndexBasicInfoService;
+import com.rybicki.investmentportal.Service.RandomCompaniesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class DowJones30Controller implements StockController {
     @Autowired
     private DowJones30Service dowJones30Service;
+
+    @Autowired
+    private RandomCompaniesService randomDowJones30CompaniesService;
 
     @Autowired
     private IndexBasicInfoService indexBasicInfoService;
@@ -39,5 +42,9 @@ public class DowJones30Controller implements StockController {
         return indexBasicInfoService.getIndexBasicInfo("^DJI");
     }
 
+    @GetMapping("/stocks/dowJones/getRandomCompanies")
+    public ArrayList<CompanyBasicInfo> getRandomCompanies() {
+        return randomDowJones30CompaniesService.randomizeDowJones30Companies();
+    }
 
 }

@@ -14,4 +14,6 @@ public interface StockController {
 
     CompanyBasicInfo getIndexInfo();
 
+    ArrayList<CompanyBasicInfo> getRandomCompanies();
+
 }

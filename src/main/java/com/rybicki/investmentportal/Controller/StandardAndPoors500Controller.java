@@ -2,6 +2,7 @@ package com.rybicki.investmentportal.Controller;
 
 import com.rybicki.investmentportal.Model.CompanyBasicInfo;
 import com.rybicki.investmentportal.Service.IndexBasicInfoService;
+import com.rybicki.investmentportal.Service.RandomCompaniesService;
 import com.rybicki.investmentportal.Service.StandardAndPoors500Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -18,6 +18,9 @@ import java.util.Map;
 public class StandardAndPoors500Controller implements StockController {
     @Autowired
     private StandardAndPoors500Service standardAndPoors500Service;
+
+    @Autowired
+    private RandomCompaniesService randomDowJones30CompaniesService;
 
     @Autowired
     private IndexBasicInfoService indexBasicInfoService;
@@ -40,4 +43,8 @@ public class StandardAndPoors500Controller implements StockController {
         return indexBasicInfoService.getIndexBasicInfo("^GSPC");
     }
 
+    @GetMapping("/stocks/standardPoors/getRandomCompanies")
+    public ArrayList<CompanyBasicInfo> getRandomCompanies() {
+        return randomDowJones30CompaniesService.randomizeStandardAndPoors500Companies();
+    }
 }
